@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "android": "nuxt build && nuxt generate --no-ssr && rm -rf android && npx cap add android && npx cap copy && npx cap open android"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^4.6.1",
+    "chart.js": "^4.1.1",
+    "nuxt": "3.0.0",
+    "primeicons": "^6.0.1",
+    "primevue": "^3"
+  },
+  "dependencies": {
+    "@capacitor/android": "^4.6.1",
+    "@capacitor/core": "^4.6.1",
+    "@capacitor/ios": "^4.6.1"
+  }
+}

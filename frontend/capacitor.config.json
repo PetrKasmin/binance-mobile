@@ -1,0 +1,17 @@
+{
+  "appId": "com.binance.app",
+  "appName": "BinanceMobile",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": ".output/public",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {},
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  }
+}
