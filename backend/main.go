@@ -1,9 +1,7 @@
 package main
 
-import (
-	"server"
-)
+import "local.app/route"
 
 func main() {
-	server.Run()
+	route.Run()
 }

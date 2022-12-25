@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "cross-env NODE_ENV=production nuxt build",
+    "dev": "cross-env NODE_ENV=development nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -10,14 +10,16 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.1",
-    "chart.js": "^4.1.1",
-    "nuxt": "3.0.0",
-    "primeicons": "^6.0.1",
-    "primevue": "^3"
+    "@mdi/font": "^7.1.96",
+    "cross-env": "^7.0.3",
+    "nuxt": "3.0.0"
   },
   "dependencies": {
     "@capacitor/android": "^4.6.1",
     "@capacitor/core": "^4.6.1",
-    "@capacitor/ios": "^4.6.1"
+    "@capacitor/ios": "^4.6.1",
+    "@pinia/nuxt": "^0.4.6",
+    "sass": "^1.51.0",
+    "vuetify": "^3.0.5"
   }
 }

@@ -1,10 +1,11 @@
-package server
+package route
 
 import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/websocket"
 	"github.com/rs/cors"
+	"local.app/auth"
 	"log"
 	"net/http"
 	"time"
@@ -13,16 +14,24 @@ import (
 const ip string = ""
 
 //const ip string = "172.31.254.5"
-const port string = "1000"
+const port string = "5000"
 const timing = 3
 
 func Run() {
 	mux := http.NewServeMux()
-
 	mux.HandleFunc("/", home)
+	mux.HandleFunc("/api/me", auth.Me)
+	mux.HandleFunc("/api/login", auth.Login)
 	mux.HandleFunc("/ws", ws)
-
 	handler := cors.Default().Handler(mux)
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowedHeaders:   []string{"*"},
+		AllowedMethods:   []string{"GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE"},
+		AllowCredentials: true,
+		Debug:            false,
+	})
+	handler = c.Handler(handler)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%s", ip, port), handler))
 }
 
@@ -34,6 +43,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// SOCKET
 var upgrade = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
