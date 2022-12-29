@@ -1,3 +1,5 @@
 <template>
-  <h3>SETTINGS</h3>
+  <NuxtLayout>
+    <h3>SETTINGS</h3>
+  </NuxtLayout>
 </template>

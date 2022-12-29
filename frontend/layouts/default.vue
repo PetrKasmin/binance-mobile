@@ -12,13 +12,31 @@
       </template>
       <v-app-bar-title>BINANCE</v-app-bar-title>
       <template v-slot:append>
-        <v-btn icon="mdi-dots-vertical" />
+<!--        <v-btn icon="mdi-dots-vertical" />-->
         <v-spacer></v-spacer>
-        <v-btn icon="mdi-logout" @click="auth.logout()" />
         <v-btn :icon="theme.getIcon" @click="theme.setTheme(theme.type === 'light' ? 'dark' : 'light')" />
       </template>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer"  />
+    <v-navigation-drawer v-model="drawer" floating>
+      <v-list-item
+          prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+          lines="two"
+          title="Admin"
+          :subtitle="auth.user.email"
+      ></v-list-item>
+      <v-divider></v-divider>
+      <v-list density="compact" nav>
+        <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
+        <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
+      </v-list>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block prepend-icon="mdi-logout" variant="tonal" @click="auth.logout">
+            Выход
+          </v-btn>
+        </div>
+      </template>
+    </v-navigation-drawer>
     <v-main @mousemove="cursor($event)"  v-touch="{ end: () => swipe('end'), down: () => swipe('down'), move: ($event) => cursor($event) }">
       <TouchUpdaterPage :height="height" :theme="theme.getThem" />
       <v-container>
