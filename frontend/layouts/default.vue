@@ -17,7 +17,7 @@
         <v-btn :icon="theme.getIcon" @click="theme.setTheme(theme.type === 'light' ? 'dark' : 'light')" />
       </template>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" floating>
+    <v-navigation-drawer v-model="drawer" :floating="mobile">
       <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
           lines="two"
@@ -55,11 +55,12 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
 import { useTheme } from '~/stores/theme';
 import { useAuth } from "~/stores/auth";
 const theme = useTheme();
 const auth = useAuth();
-
+const { mobile } = useDisplay()
 
 const drawer = ref(null);
 const navigation = [

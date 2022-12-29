@@ -1,8 +1,9 @@
-package auth
+package controllerAuth
 
 import (
 	"encoding/json"
 	"github.com/golang-jwt/jwt/v4"
+	"local.app/serviceAuth"
 	"net/http"
 	"time"
 )
@@ -28,6 +29,7 @@ type Claims struct {
 
 // Login Авторизация
 func Login(w http.ResponseWriter, r *http.Request) {
+	serviceAuth.Test()
 	var credentials Credentials
 	// Получаем тело JSON и декодируем в учетные данные
 	err := json.NewDecoder(r.Body).Decode(&credentials)

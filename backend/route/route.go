@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/gorilla/websocket"
 	"github.com/rs/cors"
-	"local.app/auth"
+	"local.app/controllerAuth"
 	"log"
 	"net/http"
 	"time"
@@ -20,8 +20,8 @@ const timing = 3
 func Run() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", home)
-	mux.HandleFunc("/api/me", auth.Me)
-	mux.HandleFunc("/api/login", auth.Login)
+	mux.HandleFunc("/api/me", controllerAuth.Me)
+	mux.HandleFunc("/api/login", controllerAuth.Login)
 	mux.HandleFunc("/ws", ws)
 	handler := cors.Default().Handler(mux)
 	c := cors.New(cors.Options{
